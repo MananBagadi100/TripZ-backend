@@ -1,0 +1,22 @@
+# Node modules
+node_modules/
+
+# Env files
+.env
+.env.* 
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Process files
+pids
+*.pid
+*.seed
+
+# OS junk
+.DS_Store
+
+# Build
+dist/
