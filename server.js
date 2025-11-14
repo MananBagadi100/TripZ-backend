@@ -15,6 +15,9 @@ require('dotenv').config()
 //for parsing any cookie data
 app.use(cookieParser())
 
+//for parsing json body of requests
+app.use(express.json())
+
 //testing the status of server - running or not!
 app.get('/',(req,res) => {
     res.json({message : 'The server is running !'})
