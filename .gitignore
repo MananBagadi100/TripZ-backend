@@ -10,6 +10,9 @@ logs
 *.log
 npm-debug.log*
 
+#created by extensions for mysql db communication
+.vscode/
+
 # Process files
 pids
 *.pid
