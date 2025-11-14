@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const cors = require('cors')
+const cookieParser = require('cookie-parser')
 
 //for handling cors
 app.use (cors({
@@ -10,6 +11,9 @@ app.use (cors({
 
 //importing the .env file
 require('dotenv').config()
+
+//for parsing any cookie data
+app.use(cookieParser())
 
 //testing the status of server - running or not!
 app.get('/',(req,res) => {
