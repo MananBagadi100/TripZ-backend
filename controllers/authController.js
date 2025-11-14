@@ -2,11 +2,10 @@ const pool = require('../config/db');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
-exports.loginAdmin = async (req, res) => {
+async function loginAdmin(req, res) {
     const { email, password } = req.body;
 
     try {
-        // Find admin by email
         const [rows] = await pool.query(
             'SELECT * FROM admins WHERE email = ?',
             [email]
@@ -18,7 +17,6 @@ exports.loginAdmin = async (req, res) => {
 
         const admin = rows[0];
 
-        // Compare password
         const isMatch = await bcrypt.compare(password, admin.password);
         if (!isMatch) {
             return res.status(400).json({ message: 'Invalid password' });
@@ -31,12 +29,27 @@ exports.loginAdmin = async (req, res) => {
             { expiresIn: '7d' }
         );
 
-        return res.json({
-            message: 'Login successful',
-            token,
+        // Send JWT in cookie
+        res.cookie("token", token, {
+            httpOnly: true,
+            secure: false,           // true in production (HTTPS)
+            sameSite: "lax",
+            maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
         });
+
+        return res.json({ message: "Login successful" });
+
     } catch (err) {
         console.error(err);
         res.status(500).json({ message: 'Server error' });
     }
+}
+
+async function logoutAdmin(req, res) {
+    return res.clearCookie("token").json({ message: "Logged out" });
+}
+
+module.exports = {
+    loginAdmin,
+    logoutAdmin
 };
