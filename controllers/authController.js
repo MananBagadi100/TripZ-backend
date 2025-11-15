@@ -49,7 +49,38 @@ async function logoutAdmin(req, res) {
     return res.clearCookie("token").json({ message: "Logged out" });
 }
 
+
+async function registerAdmin(req, res) {
+    const { email, password } = req.body;
+
+    try {
+        // Check if already exists
+        const [existing] = await pool.query(
+            'SELECT * FROM admins WHERE email = ?',
+            [email]
+        );
+        if (existing.length > 0) {
+            return res.status(400).json({ message: "Admin already exists" });
+        }
+
+        // Hash password
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        // Insert into DB
+        await pool.query(
+            'INSERT INTO admins (email, password) VALUES (?, ?)',
+            [email, hashedPassword]
+        );
+
+        return res.json({ message: "Admin registered successfully", hashedPassword });
+
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({ message: "Server error" });
+    }
+}
 module.exports = {
     loginAdmin,
-    logoutAdmin
+    logoutAdmin,
+    registerAdmin
 };
