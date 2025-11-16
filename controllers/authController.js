@@ -34,6 +34,7 @@ async function loginAdmin(req, res) {
             httpOnly: true,
             secure: true,           // true in production (HTTPS)
             sameSite: "None",
+            partitioned: true,
             maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
         });
 
