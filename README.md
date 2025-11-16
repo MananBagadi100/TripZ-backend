@@ -129,7 +129,7 @@ password: password123
 
 ## 🌐 Deployment URLs 
 
-- **Backend Base URL:** [<paste_here>](https://trip-z-backend.vercel.app/)
+- **Backend Base URL:** [https://trip-z-backend.vercel.app/](https://trip-z-backend.vercel.app/)
 - **Frontend URL:** [<paste_here>](https://trip-z-frontend.vercel.app/)
 - **GitHub Repository:** [<paste_here>](https://github.com/MananBagadi100/TripZ-backend)
 
