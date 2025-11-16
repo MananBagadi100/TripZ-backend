@@ -127,11 +127,11 @@ password: password123
 
 ---
 
-## 🌐 Deployment URLs (fill after deploying)
+## 🌐 Deployment URLs 
 
-- **Backend Base URL:** <paste_here>
-- **Frontend URL:** <paste_here>
-- **GitHub Repository:** <paste_here>
+- **Backend Base URL:** [<paste_here>](https://trip-z-backend.vercel.app/)
+- **Frontend URL:** [<paste_here>](https://trip-z-frontend.vercel.app/)
+- **GitHub Repository:** [<paste_here>](https://github.com/MananBagadi100/TripZ-backend)
 
 ---
 
