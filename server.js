@@ -10,7 +10,7 @@ require('dotenv').config()
 //for handling cors
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://trip-z-frontend.vercel.app/",
+  "https://trip-z-frontend.vercel.app",
   "http://localhost:4173"
 ];
 
