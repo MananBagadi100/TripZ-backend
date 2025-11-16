@@ -3,14 +3,39 @@ const app = express()
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
 
+
+//importing the .env file
+require('dotenv').config()
+
 //for handling cors
 app.use (cors({
     origin: process.env.FRONTEND_URL,
     credentials: true
 }))
+console.log('The port of frontend is ',process.env.FRONTEND_URL)
 
-//importing the .env file
-require('dotenv').config()
+// const allowedOrigins = [
+//   "http://localhost:5173",
+//   "https://ecommerce-frontend-six-ruby.vercel.app",
+//   "http://localhost:4173"
+// ];
+
+// const corsOptions = {
+//   origin: function (origin, callback) {
+//     if (!origin || allowedOrigins.includes(origin)) {
+//       callback(null, true);
+//     } else {
+//       console.log("❌ Blocked by CORS:", origin);
+//       callback(new Error("Not allowed by CORS"));
+//     }
+//   },
+//   credentials: true,
+//   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+//   allowedHeaders: ["Content-Type", "Authorization"],
+// };
+
+// app.use(cors(corsOptions));
+
 
 //for parsing any cookie data
 app.use(cookieParser())
